@@ -4,8 +4,7 @@ const { MongoClient } = require('mongodb');
 
 async function main(callback) {
     const URI =
-      process.env.MONGO_URI ||
-      'mongodb+srv://ind_98:Siva9751@cluster0.8zdgj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority' // Declare MONGO_URI in your .env file
+      process.env.MONGO_URI // Declare MONGO_URI in your .env file
     const client = new MongoClient(URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
     try {
