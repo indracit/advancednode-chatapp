@@ -19,7 +19,7 @@ const cookieParser = require('cookie-parser')
 const MongoStore = require('connect-mongo')(session)
 const URI = process.env.MONGO_URI
 const store = new MongoStore({
-  url: 'mongodb+srv://ind_98:Siva9751@cluster0.8zdgj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+  url: URI,
 })
 
 
@@ -31,7 +31,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(
   session({
-    secret: process.env.SESSION_SECRET || '12345',
+    secret: process.env.SESSION_SECRET ,
     resave: true,
     saveUninitialized: true,
     cookie: { secure: false },
@@ -45,7 +45,7 @@ io.use(
   passportSocketIo.authorize({
     cookieParser: cookieParser,
     key: 'express.sid',
-    secret: process.env.SESSION_SECRET || '12345',
+    secret: process.env.SESSION_SECRET ,
     store: store,
     success: onAuthorizeSuccess,
     fail: onAuthorizeFail,
