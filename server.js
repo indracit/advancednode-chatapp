@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   session({
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET || 12345,
     resave: true,
     saveUninitialized: true,
     cookie: { secure: false },
@@ -40,7 +40,9 @@ myDB(async (client) => {
 
   routes(app, myDataBase)
   auth(app, myDataBase) 
-  let currentUsers = 0 
+
+  
+  let currentUsers = 0 ;
 
   io.on('connection', (socket) => {
     ++currentUsers;
