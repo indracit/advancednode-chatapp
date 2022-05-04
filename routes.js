@@ -9,6 +9,7 @@ module.exports = function (app, myDataBase) {
      message: 'Please login',
      showLogin: true,
      showRegistration: true,
+     
    })
  })
  app
@@ -20,7 +21,7 @@ module.exports = function (app, myDataBase) {
      }
    )
  app.route('/profile').get(ensureAuthenticated, (req, res) => {
-   res.render(process.cwd() + '/views/pug/profile', {
+   res.render(process.cwd() + '/views/pug/chat', {
      username: req.user.username,
    })
  })

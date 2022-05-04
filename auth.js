@@ -19,6 +19,8 @@ module.exports = function (app, myDataBase) {
  passport.use(
    new LocalStrategy(function (username, password, done) {
      myDataBase.findOne({ username: username }, function (err, user) {
+       
+
        console.log('User ' + username + ' attempted to log in.')
        if (err) {
          return done(err)
@@ -40,7 +42,7 @@ module.exports = function (app, myDataBase) {
        clientSecret:
          process.env.GITHUB_CLIENT_SECRET ||
          '53b350b719ef5d493ceaafb85edf0445b6978113',
-       callbackURL: 'https://localhost/auth/github/callback',
+       callbackURL: 'http://localhost/auth/github/callback',
      },
      function (accessToken, refreshToken, profile, cb) {
        console.log(profile)
